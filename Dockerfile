@@ -1,4 +1,4 @@
-FROM php:6-apache
+FROM php:7-apache
 MAINTAINER leto1210
 
 # Packages
