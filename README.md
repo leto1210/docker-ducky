@@ -13,11 +13,12 @@ Compléter vos recherches avec des filtres supplémentaires (multi-categories, m
 Démarrer l'application
 Lancer l'image docker en l'expostant sur le port 80 et lier le volume /var/www/html/var/
 
-$ docker run -d --name=cheky -p 80:80 -v <data_dir>:/var/www/html/var/ seelixe/cheky:latest
+$ docker run -d --name=cheky -p 80:80 -v <data_dir>:/var/www/html/var/ leto1210/docker-cheky:latest
+
 Exemple Docker-compose file
 
 checky:
-  image: seelixe/checky:latest 
+  image: leto1210/docker-cheky:latest 
   container_name: checky
   restart: always
   environment: 
