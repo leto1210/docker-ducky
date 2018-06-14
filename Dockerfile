@@ -3,7 +3,9 @@ MAINTAINER leto1210
 
 # Packages
 RUN apt-get update && \
-    apt-get install wget cron apt-utils -y
+    apt-get install wget cron apt-utils -y && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install s6-overlay
 # (https://github.com/just-containers/s6-overlay)
