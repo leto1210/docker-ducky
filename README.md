@@ -17,12 +17,12 @@ Démarrer l'application
 
 Lancer l'image docker en l'expostant sur le port 80 et lier le volume /var/www/html/var/
 
-$ docker run -d --name=cheky -p 80:80 -v <data_dir>:/var/www/html/var/ leto1210/docker-cheky:latest
+$ docker run -d --name=cheky -p 80:80 -v <data_dir>:/var/www/html/var/ leto1210/docker-duky:latest
 
 Exemple Docker-compose file
 
 cheky:
-  image: leto1210/docker-cheky:latest 
+  image: leto1210/docker-duky:latest 
   container_name: cheky
   restart: always
   environment: 
