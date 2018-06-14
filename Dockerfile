@@ -1,9 +1,11 @@
-FROM php:7-apache
+FROM php:6-apache
 MAINTAINER leto1210
 
 # Packages
-RUN apt-get update && \
-    apt-get install wget cron apt-utils -y && \
+RUN apt-get install apt-utils && \
+    apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install wget cron -y && \
     apt-get autoremove -y
     
 # Install s6-overlay
