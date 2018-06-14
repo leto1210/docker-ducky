@@ -26,7 +26,7 @@ RUN chown -R www-data:www-data /var/www/html
 RUN echo "*/5 * * * * root /usr/bin/php /var/www/html/check.php" > /etc/cron.d/lbc
 
 # Copy all the rootfs dir into the container
-COPY rootfs /
+# COPY rootfs /
 
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
