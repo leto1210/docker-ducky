@@ -34,4 +34,6 @@ RUN apt-get remove wget -y && \
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
 
+EXPOSE 80
+
 ENV CONTAINER_VERSION 20180614
