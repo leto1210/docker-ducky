@@ -1,6 +1,6 @@
 # docker-ducky
 
-Checky
+Cheky
 
 Cheky vous permet de suivre gratuitement, en fonction de vos critères de recherche, les nouvelles annonces mises en ligne sur Leboncoin et Seloger.com. En outre, afin d'en conserver une trace, Cheky vous permet de sauvegarder les annonces Leboncoin.
 
@@ -21,9 +21,9 @@ $ docker run -d --name=cheky -p 80:80 -v <data_dir>:/var/www/html/var/ leto1210/
 
 Exemple Docker-compose file
 
-checky:
+cheky:
   image: leto1210/docker-cheky:latest 
-  container_name: checky
+  container_name: cheky
   restart: always
   environment: 
     - CHEKY_BASEURL=http://lbc.ndd.com/
@@ -38,12 +38,12 @@ checky:
     - CHEKY_CRON_INTERVAL="*/5 * * * *"
   
   volumes:
-    - /mnt/docker/checky:/var/www/html/var/
+    - /mnt/docker/cheky:/var/www/html/var/
 
 
 Environment variables
 
-CHEKY_BASEURL : url de votre checky
+CHEKY_BASEURL : url de votre cheky
 CHEKY_ADMIN_PASSWORD : mot de passe du compte Administrateur
 CHEKY_ADMIN_PASSWORD_SHA1 : mot de passe du compte Administrateur (ne pas l'oublier)
 Ne pas oublier d'utiliser un mot de passe fort pour le compte administrateur!
@@ -53,4 +53,4 @@ Port
 80 : HTTP Nextcloud port
 
 Volumes
-/var/www/html : Data de checky
+/var/www/html : Data de cheky
