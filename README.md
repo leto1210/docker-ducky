@@ -36,8 +36,10 @@ checky:
     - CHEKY_MAILER_SMTP_SECURE=tls
     - CHEKY_MAILER_FROM=mail@ndd.com
     - CHEKY_CRON_INTERVAL="*/5 * * * *"
+  
   volumes:
     - /mnt/docker/checky:/var/www/html/var/
+
 
 Environment variables
 
@@ -49,5 +51,6 @@ Ne pas oublier d'utiliser un mot de passe fort pour le compte administrateur!
 
 Port
 80 : HTTP Nextcloud port
+
 Volumes
 /var/www/html : Data de checky
