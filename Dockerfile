@@ -8,18 +8,18 @@ RUN apt-get update && \
 # Install s6-overlay
 # (https://github.com/just-containers/s6-overlay)
 #
-ENV S6_OVERLAY_VER 1.19.1.1
+ENV S6_OVERLAY_VER 1.21.4.0
 RUN wget -qO- https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VER}/s6-overlay-amd64.tar.gz | tar xz -C /
 
 # Install cheky
 # (https://github.com/Blount/LBCAlerte/)
 ENV CHEKY_VER 3.8.1
 
-ADD https://github.com/Blount/LBCAlerte/archive/${CHEKY_VER}.tar.gz /tmp
+ADD https://github.com/Blount/Cheky/archive/${CHEKY_VER}.tar.gz /tmp
 RUN cd /tmp && \
     tar xzf ${CHEKY_VER}.tar.gz && \
     rm -fr /var/www/html && \
-    mv LBCAlerte-${CHEKY_VER} /var/www/html && \
+    mv Cheky-${CHEKY_VER} /var/www/html && \
     rm -f ${CHEKY_VER}.tar.gz
 
 RUN chown -R www-data:www-data /var/www/html
