@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get autoremove -y
     
 # Install s6-overlay
-ENV S6_OVERLAY_VER 1.21.4.0
+ENV S6_OVERLAY_VER 1.19.1.1
 RUN wget -qO- https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VER}/s6-overlay-amd64.tar.gz | tar xz -C /
 
 # Install cheky (formerly LBCAlerte)
@@ -29,7 +29,7 @@ RUN apt-get remove wget -y && \
     rm -rf /tmp/*
 
 # Copy all the rootfs dir into the container
-# COPY rootfs /
+COPY rootfs /
 
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
