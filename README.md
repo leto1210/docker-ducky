@@ -33,11 +33,13 @@ checky:
     - CHEKY_CRON_INTERVAL="*/5 * * * *"
   volumes:
     - /mnt/docker/checky:/var/www/html/var/
+
 Environment variables
 CHEKY_BASEURL : url de votre checky
 CHEKY_ADMIN_PASSWORD : mot de passe du compte Administrateur
 CHEKY_ADMIN_PASSWORD_SHA1 : mot de passe du compte Administrateur (ne pas l'oublier)
 Ne pas oublier d'utiliser un mot de passe fort pour le compte administrateur!
+
 
 Port
 80 : HTTP Nextcloud port
