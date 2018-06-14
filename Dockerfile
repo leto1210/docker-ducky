@@ -3,11 +3,11 @@ MAINTAINER leto1210
 
 # Packages
 RUN apt-get update && \
-    apt-get install wget cron apt-utils -y && \
+    apt-get upgrade -y && \
+    apt-get install wget cron -y && \
     apt-get autoremove -y
     
 # Install s6-overlay
-#
 ENV S6_OVERLAY_VER 1.21.4.0
 RUN wget -qO- https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VER}/s6-overlay-amd64.tar.gz | tar xz -C /
 
