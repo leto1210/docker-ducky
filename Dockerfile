@@ -2,8 +2,7 @@ FROM php:7-apache
 MAINTAINER leto1210
 
 # Packages
-RUN apt-get install apt-utils && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install wget cron -y && \
     apt-get autoremove -y
