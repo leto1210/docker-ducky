@@ -3,4 +3,4 @@
 exec -c
 fdmove -c 2 1
 
-/usr/sbin/cron -f -S -l 0 -c /etc/crontabs
+/usr/sbin/cron
