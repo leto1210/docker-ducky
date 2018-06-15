@@ -27,8 +27,7 @@ RUN chown -R www-data:www-data /var/www/html
 RUN echo "*/5 * * * * root /usr/bin/php /var/www/html/check.php" > /etc/cron.d/lbc
 
 # Setup Apache whith php 7
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
-        sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php/7.0/apache2/php.ini
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf 
 
 # Reduce  container size
 RUN apt-get remove wget -y && \
