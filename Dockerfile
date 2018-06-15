@@ -21,8 +21,9 @@ RUN cd /tmp && \
     rm -fr /var/www/html && \
     mv Cheky-${CHEKY_VER} /var/www/html && \
     rm -f ${CHEKY_VER}.tar.gz
-
+RUN chmod -R 755 /var/www/html
 RUN chown -R www-data:www-data /var/www/html
+
 RUN echo "*/5 * * * * root /usr/bin/php /var/www/html/check.php" > /etc/cron.d/lbc
 
 # Reduce  container size
@@ -35,7 +36,8 @@ RUN apt-get remove wget -y && \
 
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
-
 EXPOSE 80
+
+CMD cron && apache2ctl -k graceful -D FOREGROUND
 
 ENV CONTAINER_VERSION 20180615
