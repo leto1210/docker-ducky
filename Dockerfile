@@ -41,7 +41,7 @@ RUN apt-get remove wget -y && \
 # ENTRYPOINT ["/init"]
 
 #Start Cron & Apache
-CMD cron && apache2ctl -k graceful -D FOREGROUND
+RUN cron && apache2ctl -k graceful -D FOREGROUND
 
 EXPOSE 80
 
