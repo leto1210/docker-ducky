@@ -1,3 +1,10 @@
-#!/usr/bin/with-contenv sh
+#!/bin/execlineb -P
 
-exec /usr/sbin/cron;
+foreground { 
+  s6-svwait -u /var/run/s6/services/syslog
+}
+
+exec -c
+fdmove -c 2 1
+
+/usr/sbin/crond -f -S -l 0 -c /etc/crontabs
