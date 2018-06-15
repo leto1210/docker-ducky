@@ -31,8 +31,8 @@ RUN apt-get remove wget -y && \
     rm -rf /tmp/*
 
 # Copy all the rootfs dir into the container
-COPY rootfs /
-#ADD root /
+#COPY rootfs /
+ADD root /
 
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
