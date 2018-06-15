@@ -38,10 +38,10 @@ RUN apt-get remove wget -y && \
 # COPY rootfs /
 
 # Set s6-overlay as entrypoint
-# ENTRYPOINT ["/init"]
+ENTRYPOINT ["/init"]
 
 #Start Cron & Apache
-RUN cron && apache2ctl -k graceful -D FOREGROUND
+CMD cron && apache2ctl -k graceful -D FOREGROUND
 
 EXPOSE 80
 
