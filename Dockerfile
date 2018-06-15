@@ -37,11 +37,12 @@ RUN apt-get remove wget -y && \
 # Copy all the rootfs dir into the container
 # COPY rootfs /
 
+#Start Cron & Apache
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["/usr/sbin/cron"]
+
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
-
-#Start Cron & Apache
-CMD cron && apache2ctl -k graceful -D FOREGROUND
 
 EXPOSE 80
 
