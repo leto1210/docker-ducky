@@ -36,7 +36,10 @@ RUN apt-get remove wget -y && \
     rm -rf /tmp/*
 
 # Copy all the rootfs dir into the container
-COPY rootfs /
+#COPY rootfs /
+
+# Add the files
+ADD root /
 
 #Start Cron & Apache
 #CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
