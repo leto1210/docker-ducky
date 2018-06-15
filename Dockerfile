@@ -10,8 +10,8 @@ RUN apt-get update && \
 # Install s6-overlay
 ENV S6_OVERLAY_VER 1.21.4.0
 #RUN wget -qO- https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VER}/s6-overlay-amd64.tar.gz | tar xz -C /
-ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VER}/s6-overlay-amd64.tar.gz /tmp/
-RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
+#ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VER}/s6-overlay-amd64.tar.gz /tmp/
+#RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
 
 # Install cheky (formerly LBCAlerte)
 ENV CHEKY_VER 3.8.1
@@ -26,6 +26,10 @@ RUN chown -R www-data:www-data /var/www/html
 
 RUN echo "*/5 * * * * root /usr/bin/php /var/www/html/check.php" > /etc/cron.d/lbc
 
+# Setup Apache whith php 7
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
+        sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php/7.0/apache2/php.ini
+
 # Reduce  container size
 RUN apt-get remove wget -y && \
     rm -rf /var/lib/apt/lists/* && \
@@ -36,8 +40,10 @@ RUN apt-get remove wget -y && \
 
 # Set s6-overlay as entrypoint
 # ENTRYPOINT ["/init"]
-EXPOSE 80
 
+#Start Cron & Apache
 CMD cron && apache2ctl -k graceful -D FOREGROUND
+
+EXPOSE 80
 
 ENV CONTAINER_VERSION 20180615
