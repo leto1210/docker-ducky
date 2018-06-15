@@ -32,11 +32,10 @@ RUN apt-get remove wget -y && \
 
 # Copy all the rootfs dir into the container
 #COPY rootfs /
-ADD root /
 
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
 
 EXPOSE 80
 
-ENV CONTAINER_VERSION 20180614
+ENV CONTAINER_VERSION 20180615
