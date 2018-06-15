@@ -1,4 +1,4 @@
-FROM php:5-apache
+FROM php:7-apache
 MAINTAINER leto1210
 
 # Packages
@@ -30,6 +30,7 @@ RUN apt-get remove wget -y && \
 
 # Copy all the rootfs dir into the container
 #COPY rootfs /
+ADD root /
 
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
