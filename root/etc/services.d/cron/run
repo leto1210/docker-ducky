@@ -1,9 +1,5 @@
 #!/bin/execlineb -P
 
-foreground { 
-  s6-svwait -u /var/run/s6/services/syslog
-}
-
 exec -c
 fdmove -c 2 1
 
