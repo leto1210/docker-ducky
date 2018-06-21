@@ -47,6 +47,9 @@ RUN chmod 0644 /etc/cron.d/cheky-check
 #CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 #CMD ["/usr/sbin/cron"]
 
+# Start cron
+RUN cron
+
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
 
