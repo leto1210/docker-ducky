@@ -41,6 +41,8 @@ RUN apt-get remove wget -y && \
 # Add the files
 ADD root /
 
+RUN chmod 0644 /etc/cron.d/cheky-check
+
 #Start Cron & Apache
 #CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 #CMD ["/usr/sbin/cron"]
