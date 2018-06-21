@@ -40,7 +40,6 @@ RUN apt-get remove wget -y && \
 
 # Add the files
 ADD root /
-
 RUN chmod 0644 /etc/cron.d/cheky-check
 
 #Start Cron & Apache
