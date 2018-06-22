@@ -4,3 +4,4 @@
 #fdmove -c 2 1
 
 #/usr/sbin/cron
+exec /usr/sbin/cron
