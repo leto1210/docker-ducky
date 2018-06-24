@@ -1,1 +1,4 @@
-*/30 * * * * php /var/www/html/check.php
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+*/30 * * * * root /usr/local/bin/php /var/www/html/check.php
