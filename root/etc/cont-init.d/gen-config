@@ -1,0 +1,28 @@
+#!/usr/bin/with-contenv bash
+
+CHEKY_VAR_DIR=/var/www/html/var
+
+echo "==> Ensure requires folders are present in '$CHEKY_VAR_DIR'"
+FOLDERS=(configs feeds tmp)
+for f in ${FOLDERS[@]}; do
+    if [ ! -d $CHEKY_VAR_DIR/$f ]; then
+        echo "    create '$CHEKY_VAR_DIR/$f' folder"
+        mkdir $CHEKY_VAR_DIR/$f
+    fi
+done
+
+echo "==> Generate 'config.ini'"
+# Set default values 
+if [ -z $CHEKY_CONFIG_MAILER ]; then
+    echo "    use default value for 'CHEKY_CONFIG_MAILER'"
+    export CHEKY_CONFIG_MAILER=0
+fi
+if [ -z $CHEKY_BASEURL ]; then
+    echo "    use default value for 'CHEKY_BASEURL'"
+    export CHEKY_BASEURL=http://cheky.local
+fi
+
+if [ ! -f $CHEKY_VAR_DIR/config.ini ]; then
+    /usr/local/bin/envtpl /etc/envtpl/config.ini.tpl -o $CHEKY_VAR_DIR/config.ini
+else
+    echo "    '$CHEKY_VAR_DIR/config.ini' already exists"
