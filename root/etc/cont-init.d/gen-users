@@ -1,0 +1,30 @@
+#!/usr/bin/with-contenv bash
+
+USERS_FILE=/var/www/html/var/users.db
+
+generate_users_file() {
+    if [ -z $CHEKY_ADMIN_PASSWORD_SHA1 ]; then
+        # Set default password
+        if [ -z $CHEKY_ADMIN_PASSWORD ]; then
+            echo "    use default value for 'CHEKY_ADMIN_PASSWORD'"
+            export CHEKY_ADMIN_PASSWORD=admin
+        fi
+
+        echo "    generate sha1sum from 'CHEKY_ADMIN_PASSWORD' env variable"
+        SHA1SUM=$(echo -n "$CHEKY_ADMIN_PASSWORD" | sha1sum | cut -d" " -f1)
+        export CHEKY_ADMIN_PASSWORD_SHA1=$SHA1SUM
+    
+    else
+        echo "    sha1sum password is given as env variable"
+    fi
+
+    /usr/local/bin/envtpl /etc/envtpl/users.db.tpl -o $USERS_FILE
+}
+
+
+echo "==> Generate 'users.db'"
+if [ ! -f $USERS_FILE ]; then
+    generate_users_file
+else
+    echo "    '$USERS_FILE' already exists"
+fi
