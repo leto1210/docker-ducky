@@ -44,7 +44,7 @@ COPY etc/cron.d/cheky-check /etc/cron.d/cheky-check
 RUN chmod 0644 /etc/cron.d/cheky-check
 
 # Start cron
-RUN cron
+#RUN cron
 
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
