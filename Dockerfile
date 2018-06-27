@@ -35,20 +35,14 @@ RUN apt-get remove wget -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
-# Copy all the rootfs dir into the container
-#COPY rootfs /
-
 # Add the files
 ADD root /
 COPY etc/cron.d/cheky-check /etc/cron.d/cheky-check
 RUN chmod 0644 /etc/cron.d/cheky-check
-
-# Start cron
-RUN cron
 
 # Set s6-overlay as entrypoint
 ENTRYPOINT ["/init"]
 
 EXPOSE 80
 
-ENV CONTAINER_VERSION 20180625
+ENV CONTAINER_VERSION 20180627
