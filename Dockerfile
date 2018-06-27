@@ -40,6 +40,7 @@ RUN apt-get remove wget -y && \
 
 # Add the files
 ADD root /
+COPY etc/cron.d/cheky-check /etc/cron.d/cheky-check
 RUN chmod 0644 /etc/cron.d/cheky-check
 
 # Start cron
