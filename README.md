@@ -50,7 +50,8 @@ Ne pas oublier d'utiliser un mot de passe fort pour le compte administrateur!
 
 
 Port
-80 : HTTP Nextcloud port
+80 : HTTP port
 
 Volumes
 /var/www/html : Data de cheky
+/var/www/html /var: Data persistante de cheky
