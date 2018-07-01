@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+# Change rights
+chown www-data:www-data -R /var/www/html/var/
