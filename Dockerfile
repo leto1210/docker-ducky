@@ -15,7 +15,7 @@ ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLA
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
 
 # Install cheky (formerly LBCAlerte)
-ENV CHEKY_VER 4.0.1
+ENV CHEKY_VER 4.1
 ADD https://github.com/Blount/Cheky/archive/${CHEKY_VER}.tar.gz /tmp
 RUN cd /tmp && \
     tar xzf ${CHEKY_VER}.tar.gz && \
